@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Gestió d'usuaris</title>
+</head>
+<body>
+  <h1>Usuaris</h1>
+  <form id="addForm">
+    <input type="text" placeholder="Usuari" id="username" required>
+    <input type="text" placeholder="Password" id="password" required>
+    <input type="text" placeholder="Rol" id="role" required>
+    <button type="submit">Afegir</button>
+  </form>
+
+  <ul id="userList"></ul>
+
+  <script>
+    async function fetchUsers() {
+      try {
+        const res = await fetch('/list');
+        const text = await res.text();
+        try {
+          const users = JSON.parse(text);
+          const list = document.getElementById('userList');
+          list.innerHTML = '';
+          users.forEach(u => {
+            const li = document.createElement('li');
+            li.textContent = `${u.username} (${u.role})`;
+            list.appendChild(li);
+          });
+        } catch (err) {
+          console.error("La resposta de /list no és JSON:", text);
+        }
+      } catch (err) {
+        console.error("Error en la petició /list:", err);
+      }
+    }
+
+    document.getElementById('addForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const role = document.getElementById('role').value;
+
+      try {
+        const res = await fetch('/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ username, password, role })
+        });
+
+        const text = await res.text();
+        try {
+          const json = JSON.parse(text);
+          console.log("Resposta de /add:", json);
+          fetchUsers();
+        } catch (err) {
+          console.error("La resposta de /add no és JSON:", text);
+        }
+      } catch (err) {
+        console.error("Error en la petició /add:", err);
+      }
+    });
+
+    fetchUsers();
+  </script>
+</body>
+</html>
