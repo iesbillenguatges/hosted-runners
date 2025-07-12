@@ -71,6 +71,6 @@ També exposa els ports 5000 (app) i 6379 (Redis).
 Per executar localment (amb Docker i docker-compose):
 
 ```bash
-unzip user_manager_redis_flask_delete.zip
-cd user_manager_redis_flask
+git clone https://github.com/iesbillenguatges/hosted-runners.git
+cd hosted-runners
 docker-compose up --build
