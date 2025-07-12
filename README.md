@@ -33,7 +33,7 @@ La informació es guarda a Redis i es mostra en un frontend senzill. El projecte
 
 Flask és un micro-framework per a Python que serveix per crear aplicacions web de manera senzilla i flexible.
 
-Característiques principals de Flask:
+#### Característiques principals de Flask:
 
 - Lleuger i minimalista: Només inclou el necessari per començar una aplicació web. No obliga a usar cap estructura o components específics.
 
