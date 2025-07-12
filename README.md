@@ -31,6 +31,31 @@ La informació es guarda a Redis i es mostra en un frontend senzill. El projecte
 - Gestiona les rutes API per afegir (`/add`), llistar (`/list`) i eliminar (`/delete/<username>`) usuaris
 - Es comunica amb Redis per guardar i recuperar dades
 
+Flask és un micro-framework per a Python que serveix per crear aplicacions web de manera senzilla i flexible.
+
+Característiques principals de Flask:
+
+- Lleuger i minimalista: Només inclou el necessari per començar una aplicació web. No obliga a usar cap estructura o components específics.
+
+- Flexible: Pots afegir només les extensions que necessitis (bases de dades, autenticació, etc).
+
+- Fàcil d’aprendre: Té una corba d’aprenentatge baixa, ideal per a projectes petits o per aprendre desenvolupament web amb Python.
+
+- Serveix aplicacions web, APIs, i molt més.
+
+## El projecte és un exemple bàsic d’API RESTful.Per què?
+
+- API: El backend exposa rutes HTTP (/add, /list, /delete/<username>) que permeten al frontend (o a qualsevol client) interactuar amb els usuaris.
+
+- RESTful: Utilitza mètodes HTTP adequats:
+
+        * POST /add per crear un usuari
+        * GET /list per obtenir la llista d’usuaris
+        * DELETE /delete/<username> per eliminar un usuari
+
+- Les respostes són en format JSON, que és el format habitual en APIs REST.
+
+
 ---
 
 ### `static/index.html`
