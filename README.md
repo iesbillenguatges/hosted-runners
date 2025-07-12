@@ -43,7 +43,7 @@ Flask és un micro-framework per a Python que serveix per crear aplicacions web 
 
 - Serveix aplicacions web, APIs, i molt més.
 
-## El projecte és un exemple bàsic d’API RESTful.Per què?
+## El projecte és un exemple bàsic d’API RESTful. Per què?
 
 - API: El backend exposa rutes HTTP (/add, /list, /delete/<username>) que permeten al frontend (o a qualsevol client) interactuar amb els usuaris.
 
