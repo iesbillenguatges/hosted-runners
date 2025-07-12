@@ -10,18 +10,14 @@ r = redis.Redis(host=redis_host, port=6379, decode_responses=True)
 def add_user():
     try:
         data = request.get_json(force=True)
-        if not data:
-            raise ValueError("No s'ha rebut cap JSON")
         username = data.get("username")
         password = data.get("password")
         role = data.get("role")
         if not all([username, password, role]):
             raise ValueError("Falten camps obligatoris")
         r.hset(f"user:{username}", mapping={"password": password, "role": role})
-        print(f"[INFO] Usuari afegit: {username}")
         return jsonify({"status": "usuari afegit"}), 200
     except Exception as e:
-        print("[ERROR] /add:", str(e))
         return jsonify({"error": str(e)}), 500
 
 @app.route("/list", methods=["GET"])
@@ -35,7 +31,16 @@ def list_users():
             users.append(user_data)
         return jsonify(users), 200
     except Exception as e:
-        print("[ERROR] /list:", str(e))
+        return jsonify({"error": str(e)}), 500
+
+@app.route("/delete/<username>", methods=["DELETE"])
+def delete_user(username):
+    try:
+        result = r.delete(f"user:{username}")
+        if result == 0:
+            return jsonify({"error": "Usuari no trobat"}), 404
+        return jsonify({"status": "usuari eliminat"}), 200
+    except Exception as e:
         return jsonify({"error": str(e)}), 500
 
 @app.route("/")
