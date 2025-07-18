@@ -39,7 +39,7 @@ Flask és un micro-framework per a Python que serveix per crear aplicacions web 
 
 - Flexible: Pots afegir només les extensions que necessitis (bases de dades, autenticació, etc).
 
-- Fàcil d’aprendre: Té una corba d’aprenentatge baixa, ideal per a projectes petits o per aprendre desenvolupament web amb Python.
+- Fàcil d’aprendre: Té una corba d’aprenentatge baixa, ideal per a projectes xicotets o per a aprendre desenvolupament web amb Python.
 
 - Serveix aplicacions web, APIs, i molt més.
 
